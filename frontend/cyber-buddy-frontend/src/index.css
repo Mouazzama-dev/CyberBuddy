@@ -245,3 +245,48 @@ body {
 
   background: radial-gradient(circle at top, #020617, #020617);
 }
+
+/* Reputation helper text */
+
+.status-item small {
+  display: block;
+  margin-top: 6px;
+  font-size: 11.5px;
+  color: #64748b;
+}
+
+/* NETWORK PANEL */
+
+.network-box {
+  margin-top: 22px;
+  padding: 18px;
+  border-radius: 12px;
+
+  background: rgba(2, 6, 23, 0.75);
+  border: 1px solid rgba(148, 163, 184, 0.08);
+}
+
+.network-box span {
+  font-size: 13px;
+  color: #94a3b8;
+}
+
+/* GRID */
+
+.network-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-top: 10px;
+}
+
+.network-grid label {
+  font-size: 11.5px;
+  color: #64748b;
+}
+
+.network-grid p {
+  margin-top: 4px;
+  font-size: 13px;
+  color: #cbd5f5;
+}

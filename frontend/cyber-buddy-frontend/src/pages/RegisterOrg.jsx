@@ -88,46 +88,34 @@ export default function RegisterOrg({ contracts, account }) {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-10 p-6 rounded-2xl shadow-lg bg-white">
-      <h2 className="text-2xl font-semibold mb-4">Register Organization</h2>
+  <div className="page-container">
+    <div className="card">
+      <h2>Register Organization</h2>
 
       <input
-        className="w-full border rounded-xl px-4 py-3 mb-3 focus:outline-none focus:ring-2 focus:ring-black"
         placeholder="Organization Name"
         value={name}
         onChange={(e) => setName(e.target.value)}
         disabled={loading}
       />
 
-      {error && (
-        <div className="mb-3 text-sm text-red-600 bg-red-50 p-3 rounded-xl">
-          {error}
-        </div>
-      )}
+      {error && <div className="error-box">{error}</div>}
+      {success && <div className="success-box">{success}</div>}
 
-      {success && (
-        <div className="mb-3 text-sm text-green-600 bg-green-50 p-3 rounded-xl">
-          {success}
-        </div>
-      )}
-
-      <div className="flex gap-3">
-        <button
-          onClick={registerOrg}
-          disabled={loading}
-          className="flex-1 bg-black text-white py-3 rounded-xl hover:opacity-90 transition disabled:opacity-50"
-        >
+      <div className="button-group">
+        <button onClick={registerOrg} disabled={loading}>
           {loading ? "Processing..." : "Register"}
         </button>
 
         <button
+          className="secondary"
           onClick={deactivateOrg}
           disabled={loading}
-          className="flex-1 border border-black py-3 rounded-xl hover:bg-black hover:text-white transition disabled:opacity-50"
         >
           Deactivate
         </button>
       </div>
     </div>
-  );
+  </div>
+);
 }

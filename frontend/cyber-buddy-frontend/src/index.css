@@ -170,3 +170,78 @@ body {
   color: #cbd5f5;
   word-break: break-all;
 }
+
+/* APP LAYOUT */
+
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+  background: #020617;
+  color: white;
+}
+
+/* SIDEBAR */
+
+.sidebar {
+  width: 240px;
+  padding: 28px 22px;
+
+  background: rgba(2, 6, 23, 0.95);
+  border-right: 1px solid rgba(148, 163, 184, 0.12);
+
+  box-shadow: 5px 0 25px rgba(0, 0, 0, 0.35);
+}
+
+/* LOGO */
+
+.logo {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 30px;
+}
+
+/* NAV */
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* LINKS */
+
+.nav-link {
+  padding: 10px 14px;
+  border-radius: 10px;
+
+  color: #cbd5f5;
+  text-decoration: none;
+  font-size: 14.5px;
+
+  transition: all 0.2s ease;
+}
+
+/* HOVER */
+
+.nav-link:hover {
+  background: rgba(148, 163, 184, 0.08);
+  color: white;
+}
+
+/* ACTIVE LINK (🔥 BIG UPGRADE) */
+
+.nav-link.active {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  color: white;
+
+  box-shadow: 0 6px 18px rgba(37, 99, 235, 0.35);
+}
+
+/* MAIN CONTENT */
+
+.main-content {
+  flex: 1;
+  padding: 35px 45px;
+
+  background: radial-gradient(circle at top, #020617, #020617);
+}

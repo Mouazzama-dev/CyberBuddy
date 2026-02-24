@@ -50,9 +50,9 @@ if (!account) {
         />
 
         <Route
-          path="/register"
-          element={<RegisterOrg contracts={contracts} />}
-        />
+  path="/register"
+  element={<RegisterOrg contracts={contracts} account={account} />}
+/>
 
         <Route
           path="/submit"

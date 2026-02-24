@@ -298,7 +298,6 @@ body {
   align-items: flex-start;
   padding-top: 60px;
   min-height: 100vh;
-  background: radial-gradient(circle at top, #0f172a, #020617);
   color: white;
   font-family: system-ui, -apple-system, sans-serif;
 }
@@ -308,7 +307,7 @@ body {
   background: rgba(15, 23, 42, 0.9);
   padding: 30px;
   border-radius: 16px;
-  width: 420px;
+  width: 720px;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
   border: 1px solid rgba(255, 255, 255, 0.05);
 }
@@ -392,4 +391,122 @@ button.secondary {
 
 button.secondary:hover {
   background: rgba(255, 255, 255, 0.05);
+}
+
+
+/* Organization Section */
+.org-list {
+  margin-top: 25px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding-top: 15px;
+}
+
+.org-list h3 {
+  font-size: 16px;
+  margin-bottom: 12px;
+  color: #94a3b8;
+}
+
+/* Each Org Row */
+.org-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.03);
+  margin-bottom: 10px;
+  transition: 0.2s;
+}
+
+.org-card:hover {
+  background: rgba(255,255,255,0.06);
+  transform: translateY(-1px);
+}
+
+/* Org Info */
+.org-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.org-name {
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.org-wallet {
+  font-size: 11px;
+  color: #64748b;
+  margin-top: 3px;
+}
+
+/* Status Badge */
+.status-badge {
+  font-size: 11px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-weight: 500;
+}
+
+.status-badge.active {
+  background: rgba(34,197,94,0.15);
+  color: #86efac;
+}
+
+.status-badge.inactive {
+  background: rgba(239,68,68,0.15);
+  color: #fca5a5;
+}
+
+/* Empty State */
+.empty-state {
+  font-size: 13px;
+  color: #64748b;
+  padding: 10px;
+}
+
+.header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.admin-badge {
+  font-size: 12px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  background: rgba(59,130,246,0.15);
+  color: #93c5fd;
+}
+
+.org-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+button.mini {
+  padding: 5px 10px;
+  font-size: 11px;
+  border-radius: 8px;
+}
+
+button.mini.danger {
+  background: rgba(239,68,68,0.2);
+  color: #fca5a5;
+}
+
+.wallet-box {
+  font-size: 12px;
+  margin-bottom: 15px;
+  color: #94a3b8;
+}
+
+.wallet-box span {
+  display: block;
+  font-size: 11px;
+  color: #64748b;
+  margin-top: 3px;
+  word-break: break-all;
 }

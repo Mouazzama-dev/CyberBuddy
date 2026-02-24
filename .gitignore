@@ -1,0 +1,50 @@
+# =========================
+# Node.js
+# =========================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+
+# Build / Output folders
+dist/
+build/
+out/
+Out/
+
+# =========================
+# Environment variables
+# =========================
+.env
+.env.*
+!.env.example
+
+# =========================
+# Logs
+# =========================
+logs/
+*.log
+
+# =========================
+# OS / Editor files
+# =========================
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# =========================
+# Foundry / Solidity
+# =========================
+cache/
+artifacts/
+broadcast/
+lib/
+forge-cache/
+*.gas-snapshot
+
+# =========================
+# Coverage / Testing
+# =========================
+coverage/

@@ -7,19 +7,31 @@ import ThreatFeed from "./pages/ThreatFeed";
 
 import { useWallet } from "./hooks/useWallet";
 import { useContracts } from "./hooks/useContracts";
+import "./index.css";
 
 function App() {
   const { account, signer, connectWallet } = useWallet();
   const contracts = useContracts(signer);
 
-  if (!account) {
-    return (
-      <div style={{ padding: 40 }}>
+if (!account) {
+  return (
+    <div className="connect-container">
+      <div className="connect-card">
         <h1>🛡 Cyber Buddy Network</h1>
-        <button onClick={connectWallet}>Connect Wallet</button>
+
+        <p>
+          A decentralized threat intelligence sharing platform enabling
+          organizations to securely collaborate, validate, and respond to
+          emerging cyber threats using blockchain technology.
+        </p>
+
+        <button onClick={connectWallet}>
+          Connect Wallet
+        </button>
       </div>
-    );
-  }
+    </div>
+  );
+}
 
   if (!contracts) {
     return (

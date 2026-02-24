@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-
 const Dashboard = ({ contracts, account }) => {
   const [reputation, setReputation] = useState(0);
   const [registered, setRegistered] = useState(false);
@@ -26,14 +25,38 @@ const Dashboard = ({ contracts, account }) => {
   }, [contracts, account]);
 
   return (
-    <div>
+  <div className="dashboard-container">
+
+    <div className="dashboard-card">
+
       <h2>Network Status</h2>
 
-      <p>Registered: {registered ? "✅ Yes" : "❌ No"}</p>
-      <p>Active: {active ? "✅ Yes" : "❌ No"}</p>
-      <p>Reputation Score: ⭐ {reputation}</p>
+      <div className="status-grid">
+        <div className="status-item">
+          <span>Registered</span>
+          <strong>{registered ? "✅ Yes" : "❌ No"}</strong>
+        </div>
+
+        <div className="status-item">
+          <span>Active</span>
+          <strong>{active ? "✅ Yes" : "❌ No"}</strong>
+        </div>
+
+        <div className="status-item">
+          <span>Reputation Score</span>
+          <strong>⭐ {reputation}</strong>
+        </div>
+      </div>
+
+      <div className="wallet-box">
+        <span>Connected Wallet</span>
+        <p>{account}</p>
+      </div>
+
     </div>
-  );
+
+  </div>
+);
 };
 
 export default Dashboard;

@@ -134,25 +134,32 @@ const SubmitThreat = ({ contracts }) => {
   };
 
   return (
-    <div>
-      <h1>Submit Threat Intelligence</h1>
+  <div className="page-container">
+    <div className="card wide-card">
 
-      {/* 😈 IPFS UPLOAD PANEL */}
-      <div style={styles.ipfsPanel}>
+      <div className="header-row">
+        <h2>Submit Threat Intelligence</h2>
+      </div>
+
+      {/* 📦 IPFS PANEL */}
+      <div className="ipfs-panel">
+
         <h3>📦 Upload Threat Artifact (IPFS)</h3>
 
         <textarea
           placeholder="Paste Raw JSON Here"
           value={jsonInput}
           onChange={(e) => setJsonInput(e.target.value)}
-          style={styles.textarea}
         />
 
-        <button onClick={uploadJSON}>
+        <button
+          className="secondary"
+          onClick={uploadJSON}
+        >
           {uploading ? "Uploading..." : "Upload JSON"}
         </button>
 
-        <div style={styles.divider}>OR</div>
+        <div className="divider">OR</div>
 
         <input
           type="file"
@@ -161,8 +168,9 @@ const SubmitThreat = ({ contracts }) => {
         />
       </div>
 
-      {/* ✅ BLOCKCHAIN FORM */}
-      <div style={styles.form}>
+      {/* 🧱 BLOCKCHAIN FORM */}
+      <div className="form-group">
+
         <input
           placeholder="Threat Payload (IP / URL / IOC)"
           value={payload}
@@ -179,18 +187,18 @@ const SubmitThreat = ({ contracts }) => {
           value={severity}
           onChange={(e) => setSeverity(Number(e.target.value))}
         >
-          <option value={1}>Low Severity</option>
-          <option value={2}>Medium Severity</option>
-          <option value={3}>High Severity</option>
+          <option value={0}>Low Severity</option>
+          <option value={1}>Medium Severity</option>
+          <option value={2}>High Severity</option>
         </select>
 
         <select
           value={category}
           onChange={(e) => setCategory(Number(e.target.value))}
         >
-          <option value={1}>Malware</option>
-          <option value={2}>Phishing</option>
-          <option value={3}>Botnet</option>
+          <option value={0}>Malware</option>
+          <option value={1}>Phishing</option>
+          <option value={2}>Botnet</option>
         </select>
 
         <button
@@ -199,9 +207,12 @@ const SubmitThreat = ({ contracts }) => {
         >
           {loading ? "Submitting..." : "Submit Threat"}
         </button>
+
       </div>
+
     </div>
-  );
+  </div>
+);
 };
 
 const styles = {

@@ -18,7 +18,7 @@ contract DeployAll is Script {
 
         OrgRegistry org = new OrgRegistry();
         console2.log("OrgRegistry:", address(org));
-
+      
         ThreatRegistry threat = new ThreatRegistry(address(org));
         console2.log("ThreatRegistry:", address(threat));
 

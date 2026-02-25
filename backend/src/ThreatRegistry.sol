@@ -33,8 +33,37 @@ contract ThreatRegistry {
         uint8 category
     );
 
+    event ThreatResolved(
+        uint256 indexed id,
+        address indexed resolver
+    );
+
     error NotRegisteredOrganization();
     error OrganizationInactive();
+    error ThreatStillActive();
+    error ThreatAlreadyResolved();
+    error InvalidThreat();
+
+    uint256 constant RESOLUTION_TIME = 5 minutes; 
+    // 🔥 Change to 1 days for production
+
+    function resolveThreat(uint256 threatId) external {
+
+        if (threatId == 0 || threatId > threatCounter)
+            revert InvalidThreat();
+
+        Threat storage threat = threats[threatId];
+
+        if (!threat.active)
+            revert ThreatAlreadyResolved();
+
+        if (block.timestamp < threat.submittedAt + RESOLUTION_TIME)
+            revert ThreatStillActive();
+
+        threat.active = false;
+
+        emit ThreatResolved(threatId, msg.sender);
+    }
 
     function submitThreat(
         bytes32 payloadHash,
@@ -62,6 +91,11 @@ contract ThreatRegistry {
             active: true
         });
 
-        emit ThreatSubmitted(threatCounter, msg.sender, severity, category);
+        emit ThreatSubmitted(
+            threatCounter,
+            msg.sender,
+            severity,
+            category
+        );
     }
 }

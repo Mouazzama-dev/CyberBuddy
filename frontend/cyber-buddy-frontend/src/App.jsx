@@ -61,7 +61,7 @@ if (!account) {
 
         <Route
           path="/feed"
-          element={<ThreatFeed contracts={contracts} />}
+          element={<ThreatFeed contracts={contracts} account={account} />}
         />
       </Routes>
     </Layout>

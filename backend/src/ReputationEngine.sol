@@ -18,18 +18,21 @@ contract ReputationEngine {
     }
 
     mapping(address => uint256) public reputationScore;
+    mapping(uint256 => bool) public reputationProcessed;
 
     event ReputationUpdated(address indexed org, uint256 newScore);
 
     error NotRegisteredOrganization();
+    error ThreatNotResolved();
+    error ReputationAlreadyProcessed();
 
-    uint256 constant REWARD = 10;
-    uint256 constant PENALTY = 5;
+    uint256 constant BASE_REWARD = 10;
+    uint256 constant BASE_PENALTY = 5;
 
     function updateReputationFromThreat(uint256 threatId) external {
 
-        (uint256 valid, uint256 invalid) =
-            attestationEngine.getThreatStats(threatId);
+        if (reputationProcessed[threatId])
+            revert ReputationAlreadyProcessed();
 
         (
             uint256 id,
@@ -42,20 +45,43 @@ contract ReputationEngine {
             bool active
         ) = threatRegistry.threats(threatId);
 
+        // ✅ Only after resolution
+        if (active)
+            revert ThreatNotResolved();
+
         if (!orgRegistry.isRegistered(submitter))
             revert NotRegisteredOrganization();
 
+        (uint256 valid, uint256 invalid) =
+            attestationEngine.getThreatStats(threatId);
+
+        // ✅ Optional severity weighting 😏🔥
+        uint256 reward = BASE_REWARD;
+        uint256 penalty = BASE_PENALTY;
+
+        if (severity == 2) {
+            reward *= 2;
+            penalty *= 2;
+        } else if (severity >= 3) {
+            reward *= 3;
+            penalty *= 3;
+        }
+
         if (valid > invalid) {
-            reputationScore[submitter] += REWARD;
+
+            reputationScore[submitter] += reward;
+
         } else if (invalid > valid) {
 
             uint256 current = reputationScore[submitter];
 
-            if (current > PENALTY)
-                reputationScore[submitter] -= PENALTY;
+            if (current > penalty)
+                reputationScore[submitter] -= penalty;
             else
                 reputationScore[submitter] = 0;
         }
+
+        reputationProcessed[threatId] = true;
 
         emit ReputationUpdated(
             submitter,

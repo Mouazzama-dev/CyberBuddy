@@ -13,7 +13,7 @@ contract DeployThreatRegistry is Script {
         vm.startBroadcast(deployerKey);
 
         ThreatRegistry registry = new ThreatRegistry(
-            0x39da6E2425Ae0208B93435E093c6d141D1301a71
+            0x1De0BFF1A4c7Bac3fB68e3B2F59de7E6f53d3c88  // OrgRegistry
         );
 
         console2.log("ThreatRegistry deployed at:", address(registry));

@@ -64,11 +64,11 @@ const Dashboard = ({ contracts, account }) => {
             <strong>{active ? "✅ Yes" : "❌ No"}</strong>
           </div>
 
-          <div className="status-item">
+          {/* <div className="status-item">
             <span>Reputation Score</span>
             <strong>⭐ {reputation}</strong>
             <small>Based on validated threat contributions</small>
-          </div>
+          </div> */}
 
         </div>
 

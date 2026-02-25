@@ -144,8 +144,15 @@ const ThreatFeed = ({ contracts, account }) => {
     }
   };
 
-  const attestThreat = async (id, verdict) => {
+  const attestThreat = async (id, verdict, submitter) => {
     if (!contracts) return;
+    console.log(account);
+    console.log(submitter);
+      // 🚫 Prevent self-voting
+  if (account?.toLowerCase() === submitter?.toLowerCase()) {
+    alert("❌ Submitter cannot vote on their own threat");
+    return;
+  }
 
     try {
       setLoadingVote(id);
@@ -282,14 +289,14 @@ const ThreatFeed = ({ contracts, account }) => {
               <div style={styles.buttons}>
                 <button
                   disabled={loadingVote === t.id}
-                  onClick={() => attestThreat(t.id, 1)}
+                  onClick={() => attestThreat(t.id, 1, t.submitter)}
                 >
                   {loadingVote === t.id ? "Voting..." : "✅ VALID"}
                 </button>
 
                 <button
                   disabled={loadingVote === t.id}
-                  onClick={() => attestThreat(t.id, 2)}
+                  onClick={() => attestThreat(t.id, 2, t.submitter)}
                 >
                   {loadingVote === t.id ? "Voting..." : "❌ INVALID"}
                 </button>

@@ -9,6 +9,7 @@ const app = express();
 
 app.use(cors());
 app.use(express.json({ limit: "10mb" }));
+console.log("JWT Loaded:", process.env.PINATA_JWT ? "Yes" : "No");
 
 const pinata = new PinataSDK({
   pinataJwt: process.env.PINATA_JWT,
@@ -16,6 +17,7 @@ const pinata = new PinataSDK({
 });
 
 app.post("/upload-json", async (req, res) => {
+  
   try {
     const { data } = req.body;
 

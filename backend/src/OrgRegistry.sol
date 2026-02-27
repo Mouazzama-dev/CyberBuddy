@@ -49,7 +49,7 @@ contract OrgRegistry {
         if (isRegistered[msg.sender]) revert AlreadyRegistered();
         if (bytes(name).length == 0) revert InvalidName();
         if (metadataHash == bytes32(0)) revert InvalidMetadata();
-
+        //writing to storage is expensive, 20000 gas per SSTORE operation
         organizations[msg.sender] = Organization({
             wallet: msg.sender,
             name: name,
